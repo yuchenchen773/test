@@ -4,35 +4,32 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                script {
+                    // Use checkout scm to check out code
+                    checkout scm
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh 'echo "Building the code..."'
+                echo 'Building the code...'
+                // Add your build steps here
             }
         }
 
         stage('Test') {
             steps {
-                sh 'echo "Running tests..."'
+                echo 'Running tests...'
+                // Add your test steps here
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying the application..."'
+                echo 'Deploying the application...'
+                // Add your deployment steps here
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Pipeline succeeded! Send notifications or perform additional tasks here.'
-        }
-        failure {
-            echo 'Pipeline failed! Send notifications or perform additional tasks here.'
         }
     }
 }
